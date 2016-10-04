@@ -11,9 +11,13 @@
 		5EF05CAC1D9A4EF9003FB19A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF05CAB1D9A4EF9003FB19A /* ViewController.swift */; };
 		5EF05CAE1D9A4EF9003FB19A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EF05CAD1D9A4EF9003FB19A /* Assets.xcassets */; };
 		5EF05CB11D9A4EF9003FB19A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EF05CAF1D9A4EF9003FB19A /* Main.storyboard */; };
+		7951C15C58AFB7D864052ED6 /* libPods-MPSearchAndKill.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD6A6E52A0519B0C391E60E /* libPods-MPSearchAndKill.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DD6A6E52A0519B0C391E60E /* libPods-MPSearchAndKill.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MPSearchAndKill.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		225907010F6CB814641A07FA /* Pods-MPSearchAndKill.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPSearchAndKill.release.xcconfig"; path = "Pods/Target Support Files/Pods-MPSearchAndKill/Pods-MPSearchAndKill.release.xcconfig"; sourceTree = "<group>"; };
+		5E1E9A011DA436B600FE8467 /* MPSearchAndKill-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPSearchAndKill-Bridging-Header.h"; sourceTree = "<group>"; };
 		5E27199F1D9C2AAB0057FCD3 /* skport.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = skport.entitlements; sourceTree = "<group>"; };
 		5EF05CA61D9A4EF9003FB19A /* skport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = skport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF05CA91D9A4EF9003FB19A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -21,6 +25,7 @@
 		5EF05CAD1D9A4EF9003FB19A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EF05CB01D9A4EF9003FB19A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5EF05CB21D9A4EF9003FB19A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6576B5B68AA200ABED963A7B /* Pods-MPSearchAndKill.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MPSearchAndKill.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MPSearchAndKill/Pods-MPSearchAndKill.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7951C15C58AFB7D864052ED6 /* libPods-MPSearchAndKill.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4188D8DA887CDDAF5801D5D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DD6A6E52A0519B0C391E60E /* libPods-MPSearchAndKill.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5EF05C9D1D9A4EF9003FB19A = {
 			isa = PBXGroup;
 			children = (
 				5EF05CA81D9A4EF9003FB19A /* MPSearchAndKill */,
 				5EF05CA71D9A4EF9003FB19A /* Products */,
+				CBBA190A73A6C224C4406522 /* Pods */,
+				4188D8DA887CDDAF5801D5D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,8 +75,18 @@
 				5EF05CAF1D9A4EF9003FB19A /* Main.storyboard */,
 				5EF05CAD1D9A4EF9003FB19A /* Assets.xcassets */,
 				5EF05CB21D9A4EF9003FB19A /* Info.plist */,
+				5E1E9A011DA436B600FE8467 /* MPSearchAndKill-Bridging-Header.h */,
 			);
 			path = MPSearchAndKill;
+			sourceTree = "<group>";
+		};
+		CBBA190A73A6C224C4406522 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6576B5B68AA200ABED963A7B /* Pods-MPSearchAndKill.debug.xcconfig */,
+				225907010F6CB814641A07FA /* Pods-MPSearchAndKill.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,9 +96,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EF05CB51D9A4EF9003FB19A /* Build configuration list for PBXNativeTarget "MPSearchAndKill" */;
 			buildPhases = (
+				BF2D319442D149419A376F65 /* [CP] Check Pods Manifest.lock */,
 				5EF05CA21D9A4EF9003FB19A /* Sources */,
 				5EF05CA31D9A4EF9003FB19A /* Frameworks */,
 				5EF05CA41D9A4EF9003FB19A /* Resources */,
+				CCE1FBF50E6581919AC524F2 /* [CP] Embed Pods Frameworks */,
+				C30FC2FB03E624311B6367E6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,10 +125,11 @@
 					5EF05CA51D9A4EF9003FB19A = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = KFNX7T9G9N;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -134,6 +164,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BF2D319442D149419A376F65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C30FC2FB03E624311B6367E6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MPSearchAndKill/Pods-MPSearchAndKill-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CCE1FBF50E6581919AC524F2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MPSearchAndKill/Pods-MPSearchAndKill-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5EF05CA21D9A4EF9003FB19A /* Sources */ = {
@@ -177,6 +255,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -226,6 +305,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -251,8 +331,10 @@
 		};
 		5EF05CB61D9A4EF9003FB19A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6576B5B68AA200ABED963A7B /* Pods-MPSearchAndKill.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MPSearchAndKill/skport.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -261,14 +343,18 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.luna.gao.MPSearchAndKill;
 				PRODUCT_NAME = skport;
+				SWIFT_OBJC_BRIDGING_HEADER = "MPSearchAndKill/MPSearchAndKill-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		5EF05CB71D9A4EF9003FB19A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 225907010F6CB814641A07FA /* Pods-MPSearchAndKill.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MPSearchAndKill/skport.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -277,6 +363,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.luna.gao.MPSearchAndKill;
 				PRODUCT_NAME = skport;
+				SWIFT_OBJC_BRIDGING_HEADER = "MPSearchAndKill/MPSearchAndKill-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

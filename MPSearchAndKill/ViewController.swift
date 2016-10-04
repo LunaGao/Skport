@@ -63,20 +63,15 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     }
     
     func killProc(PID: String) {
-        let pipe = Pipe()
-        let task = Process()
-        task.launchPath = "/bin/sh"
-        task.arguments = ["-c", String(format: "%@", "kill -9 " + PID)]
-        task.standardOutput = pipe
-        task.launch()
-        search(refush: true)
+        search(refush: true, killCommand: "/bin/kill -9 " + PID)
+        search(refush: true, killCommand: "")
     }
 
     @IBAction func clickSearchButton(_ sender: AnyObject) {
-        search(refush: false)
+        search(refush: false, killCommand: "")
     }
     
-    func search(refush: Bool) {
+    func search(refush: Bool, killCommand: String) {
         rows.removeAll()
         tableView.reloadData()
         loading.isHidden = false
@@ -91,8 +86,13 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         if !refush {
             port = portTextField.stringValue
         }
-        let str = callShell(command: "lsof -i :" + port)
-        addInRow(str: str!)
+        let str : String
+        if killCommand == "" {
+            str = callShell(command: "/usr/sbin/lsof -i :" + port)
+        } else {
+            str = callShell(command: killCommand)
+        }
+        addInRow(str: str)
         loading.stopAnimation(nil)
         loading.isHidden = true
     }
@@ -118,15 +118,44 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     }
     
     func callShell(command: String) -> String! {
-        let pipe = Pipe()
-        let task = Process()
-        task.launchPath = "/bin/sh"
-        task.arguments = ["-c", String(format: "%@", command)]
-        task.standardOutput = pipe
-        let file = pipe.fileHandleForReading
-        task.launch()
-        let result : NSString? = NSString(data: file.readDataToEndOfFile(), encoding: 4)
+        let task = authorization(command: command)
+        if task.err {
+            return ""
+        }
+        task.privilegedTask?.waitUntilExit()
+        
+        // Read output file handle for data
+        let readHandle = task.privilegedTask?.outputFileHandle()
+        let outputData = readHandle!.readDataToEndOfFile()
+        let result : NSString? = NSString(data: outputData, encoding: 4)
         return result as String!
+    }
+    
+    func authorization(command: String) -> (err: Bool, privilegedTask: STPrivilegedTask?) {
+        // Create task
+        let privilegedTask = STPrivilegedTask()
+        var args = command.components(separatedBy: " ")
+        privilegedTask.setLaunchPath(args[0])
+        args.remove(at: 0)
+        privilegedTask.setArguments(args)
+        
+        // Setting working directory is optional, defaults to /
+        // NSString *path = [[NSBundle mainBundle] resourcePath];
+        // [privilegedTask setCurrentDirectoryPath:path];
+        
+        // Launch it, user is prompted for password
+        let err = privilegedTask.launch()
+        if (err != errAuthorizationSuccess) {
+            if (err == errAuthorizationCanceled) {
+                NSLog("User cancelled")
+            } else {
+                NSLog("Something went wrong")
+            }
+            return (true, nil)
+        } else {
+            NSLog("Task successfully launched")
+        }
+        return (false, privilegedTask)
     }
     
     open func numberOfRows(in tableView: NSTableView) -> Int {
